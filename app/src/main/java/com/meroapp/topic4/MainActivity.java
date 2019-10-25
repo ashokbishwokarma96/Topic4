@@ -2,6 +2,7 @@ package com.meroapp.topic4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -52,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
 
                 String country = adapterView.getItemAtPosition(i).toString();
                 String capital = dictionary.get(country);
-                Toast.makeText(MainActivity.this,capital.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this,capital.toString(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this,Capital.class);
+                intent.putExtra("capital",capital);
+                startActivity(intent);
             }
         });
 
