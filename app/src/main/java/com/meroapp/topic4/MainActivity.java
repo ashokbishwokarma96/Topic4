@@ -3,8 +3,11 @@ package com.meroapp.topic4;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +45,16 @@ public class MainActivity extends AppCompatActivity {
                 new ArrayList<String>(dictionary.keySet())
         );
         listViewCountries.setAdapter(countryAdapter);
+
+        listViewCountries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String country = adapterView.getItemAtPosition(i).toString();
+                String capital = dictionary.get(country);
+                Toast.makeText(MainActivity.this,capital.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
